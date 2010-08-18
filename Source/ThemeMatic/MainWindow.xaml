@@ -1,8 +1,54 @@
 ﻿<Window x:Class="ThemeMatic.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Views="clr-namespace:ThemeMatic.Views" Title="ThemeMatic" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="5" />
+
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" >
+            <TextBlock Text="theme" FontSize="28" VerticalAlignment="Center" />
+            <TextBlock Text="Matic" FontSize="28" FontWeight="Bold" VerticalAlignment="Center" />
+            <TextBlock Text="- theme generator for WPF &amp; Silverlight" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="Gray" FontSize="20" FontWeight="100" />
+        </StackPanel>
+
+        <TabControl Grid.Row="1" Grid.Column="1">
+
+            <TabItem Header="Colors">
+                <Views:ColorSelectionView />
+            </TabItem>
+
+            <TabItem Header="Design">
+                
+            </TabItem>
+
+            <TabItem Header="Typgraphy" >
+
+            </TabItem>
+
+            <TabItem Header="Properties" >
+
+            </TabItem>
+
+        </TabControl>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+            <Button  Width="100" Margin="0,5" Content="Preview"/>
+            <Button  Width="100" Margin="5,5,0,5" Content="Generate"/>
+        </StackPanel>
+
+
+
+
+
+
+
     </Grid>
 </Window>

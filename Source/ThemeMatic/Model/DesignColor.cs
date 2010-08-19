@@ -9,11 +9,11 @@ using ThemeMatic.Components.Extension;
 
 namespace ThemeMatic.Model
 {
-    public class ThemeColor : INotifyPropertyChanged
+    public class DesignColor : INotifyPropertyChanged
     {
         private readonly string name;
 
-        public ThemeColor(Color baseColor, string name)
+        public DesignColor(Color baseColor, string name)
         {
             this.name = name;
             Base = baseColor;

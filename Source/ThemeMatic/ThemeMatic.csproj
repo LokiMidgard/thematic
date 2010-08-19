@@ -55,8 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\ColorToBrushConverter.cs" />
     <Compile Include="Model\ColorScheme.cs" />
-    <Compile Include="Model\ThemeColor.cs" />
+    <Compile Include="Model\Design.cs" />
+    <Compile Include="Model\DesignColor.cs" />
+    <Compile Include="Model\ThemeFactory.cs" />
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="ViewModels\ColorSelectionViewModel.cs" />
     <Compile Include="Views\ColorSelectionView.xaml.cs">
       <DependentUpon>ColorSelectionView.xaml</DependentUpon>
     </Compile>
@@ -104,9 +109,9 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="ViewModels\" />
+    <Resource Include="Resources\colorwheel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

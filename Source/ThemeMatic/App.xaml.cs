@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using ThemeMatic.Model;
+using ThemeMatic.ViewModels;
 
 namespace ThemeMatic
 {
@@ -12,5 +14,6 @@ namespace ThemeMatic
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

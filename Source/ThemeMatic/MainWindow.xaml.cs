@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThemeMatic.Model;
+using ThemeMatic.ViewModels;
 
 namespace ThemeMatic
 {
@@ -22,6 +24,17 @@ namespace ThemeMatic
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += new RoutedEventHandler(MainWindow_Loaded);
+        }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var design = new Design();
+            design.ColorScheme = new ColorScheme();
+            var themeFactory = new ThemeFactory();
+            // TODO design.Theme = themeFactory.GetAllThemes().First();
+            var vm = new ApplicationViewModel(design);
+            this.DataContext = vm;
         }
     }
 }

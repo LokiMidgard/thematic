@@ -2,6 +2,167 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
-            
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Branding" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" />
+        <TextBlock Text="Controls" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" />
+        <TextBlock Text="Window" Grid.Column="5" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" />
+
+
+        <Button Grid.Row="1" Grid.Column="0" DataContext="{Binding Primary}">
+            <TextBlock Text="Primary"  FontSize="16" />
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="1" DataContext="{Binding Secondary}">
+            <TextBlock Text="Secondary"  FontSize="16" />
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="2" DataContext="{Binding Chrome}">
+            <TextBlock Text="Chrome"  FontSize="16" />
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="3" DataContext="{Binding ChromeAlternate}">
+            <TextBlock Text="Chrome Alternate"  FontSize="16" />
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="4" DataContext="{Binding Disabled}">
+            <TextBlock Text="Disabled"  FontSize="16" />
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="5" DataContext="{Binding Foreground}">
+            <TextBlock Text="Foreground"  FontSize="16" />
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="6" DataContext="{Binding Background}">
+            <TextBlock Text="Background"  FontSize="16" />
+        </Button>
+
+        <Grid  Grid.Column="0" Grid.Row="2" DataContext="{Binding Primary}" Margin="2.5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
+            <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
+            <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
+            <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
+            <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="2" DataContext="{Binding Secondary}" Margin="2.5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
+            <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
+            <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
+            <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
+            <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Column="2" Grid.Row="2" DataContext="{Binding Chrome}" Margin="2.5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
+            <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
+            <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
+            <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
+            <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Column="3" Grid.Row="2" DataContext="{Binding ChromeAlternate}" Margin="2.5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
+            <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
+            <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
+            <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
+            <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="2" DataContext="{Binding Disabled}" Margin="2.5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
+            <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
+            <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
+            <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
+            <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Column="5" Grid.Row="2" DataContext="{Binding Foreground}" Margin="2.5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
+            <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
+            <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
+            <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
+            <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Column="6" Grid.Row="2" DataContext="{Binding Background}" Margin="2.5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
+            <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
+            <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
+            <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
+            <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.ColumnSpan="7" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="../Resources/colorwheel.png" Stretch="Uniform" />
+            <Canvas  x:Name="selectionContainer">
+            </Canvas>
+        </Grid>
+        
     </Grid>
 </UserControl>

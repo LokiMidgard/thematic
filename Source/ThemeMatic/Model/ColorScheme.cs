@@ -14,23 +14,23 @@ namespace ThemeMatic.Model
         public ColorScheme()
         {
             // branding colors
-            Primary = new ThemeColor(Colors.Gray, "primary");
+            Primary = new DesignColor(Colors.Gray, "primary");
             Primary.ColorChanged += ColorChanged;
-            Secondary = new ThemeColor(Colors.Gray, "secondary");
+            Secondary = new DesignColor(Colors.Gray, "secondary");
             Secondary.ColorChanged += ColorChanged;
 
             // chrome colors
-            Chrome = new ThemeColor(Colors.Gray, "chrome");
+            Chrome = new DesignColor(Colors.Gray, "chrome");
             Chrome.ColorChanged += ColorChanged;
-            ChromeAlternate = new ThemeColor(Colors.Gray, "chromeAlternate");
+            ChromeAlternate = new DesignColor(Colors.Gray, "chromeAlternate");
             ChromeAlternate.ColorChanged += ColorChanged;
-            Disabled = new ThemeColor(Colors.Gray, "disabled");
+            Disabled = new DesignColor(Colors.Gray, "disabled");
             Disabled.ColorChanged += ColorChanged;
 
             // foreground and background
-            Foreground = new ThemeColor(Colors.Gray, "foreground");
+            Foreground = new DesignColor(Colors.Gray, "foreground");
             Foreground.ColorChanged += ColorChanged;
-            Background = new ThemeColor(Colors.Gray, "background");
+            Background = new DesignColor(Colors.Gray, "background");
             Background.ColorChanged += ColorChanged;
         }
 
@@ -38,7 +38,7 @@ namespace ThemeMatic.Model
         {
             if (theme != null && theme.BaseResourceDictionary != null)
             {
-                var themeColor = sender as ThemeColor;
+                var themeColor = sender as DesignColor;
                 if (themeColor != null)
                 {
                     themeColor.UpdateReferences(theme.BaseResourceDictionary);
@@ -46,13 +46,13 @@ namespace ThemeMatic.Model
             }
         }
 
-        public ThemeColor Primary { get; private set; }
-        public ThemeColor Secondary { get; set; }
-        public ThemeColor Foreground { get; set; }
-        public ThemeColor Background { get; set; }
-        public ThemeColor Disabled { get; set; }
-        public ThemeColor Chrome { get; set; }
-        public ThemeColor ChromeAlternate { get; set; }
+        public DesignColor Primary { get; private set; }
+        public DesignColor Secondary { get; set; }
+        public DesignColor Foreground { get; set; }
+        public DesignColor Background { get; set; }
+        public DesignColor Disabled { get; set; }
+        public DesignColor Chrome { get; set; }
+        public DesignColor ChromeAlternate { get; set; }
 
 
         private Theme theme;

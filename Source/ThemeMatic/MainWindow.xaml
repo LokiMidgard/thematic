@@ -1,6 +1,6 @@
 ﻿<Window x:Class="ThemeMatic.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Views="clr-namespace:ThemeMatic.Views" Title="ThemeMatic" Height="350" Width="525">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Views="clr-namespace:ThemeMatic.Views" Title="ThemeMatic" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -23,7 +23,7 @@
         <TabControl Grid.Row="1" Grid.Column="1">
 
             <TabItem Header="Colors">
-                <Views:ColorSelectionView />
+                <Views:ColorSelectionView DataContext="{Binding ColorScheme}" />
             </TabItem>
 
             <TabItem Header="Design">

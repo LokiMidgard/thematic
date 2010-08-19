@@ -32,10 +32,23 @@ namespace ThemeMatic.Views
             selectionContainer.MouseLeave += SelectionMouseLeave;
             selectionElipse.MouseMove += SelectionMouseMove;
             selectionContainer.MouseMove += SelectionMouseMove;
-            this.DataContextChanged += new DependencyPropertyChangedEventHandler(ColorSelectionView_DataContextChanged);
+            this.DataContextChanged += ViewDataContextChanged;
+            this.Loaded += ViewLoaded;
         }
 
-        void ColorSelectionView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        void ViewLoaded(object sender, RoutedEventArgs e)
+        {
+            SetSelectionEllipseStartupPosition();
+        }
+
+        private void SetSelectionEllipseStartupPosition()
+        {
+            // this needs to be called after the 'loaded' event has fired so the ActualWidth and ActualHeight are ...Actually set
+            Canvas.SetLeft(selectionElipse, selectionContainer.ActualWidth /2  - SelectionEllipseRadius);
+            Canvas.SetTop(selectionElipse, selectionContainer.ActualHeight/2 - SelectionEllipseRadius);
+        }
+
+        void ViewDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             model = this.DataContext as ColorSelectionViewModel;
         }
@@ -47,12 +60,17 @@ namespace ThemeMatic.Views
             if (isDragging)
             {
                 var position = Mouse.GetPosition(selectionContainer);
-                Canvas.SetLeft(selectionElipse, position.X - SelectionEllipseRadius);
-                Canvas.SetTop(selectionElipse, position.Y - SelectionEllipseRadius);
                 if (model != null && position.X > 0 && position.Y > 0)
                 {
-                    model.ColorScheme.Primary.Base = GetColorFromPosition(position, colorWheel.Source as BitmapSource, selectionContainer);
+                    var color = GetColorFromPosition(position, colorWheel.Source as BitmapSource, selectionContainer);
+                    if (color.A != 0)
+                    {
+                        model.SelectedColor.Base = color;
+                        Canvas.SetLeft(selectionElipse, position.X - SelectionEllipseRadius);
+                        Canvas.SetTop(selectionElipse, position.Y - SelectionEllipseRadius);
+                    }
                 }
+                
             }
         }
 
@@ -96,5 +114,6 @@ namespace ThemeMatic.Views
         {
             isDragging = true;
         }
+
     }
 }

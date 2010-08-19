@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 using ThemeMatic.Model;
 
 namespace ThemeMatic.ViewModels
@@ -14,6 +11,8 @@ namespace ThemeMatic.ViewModels
         public ColorSelectionViewModel(ColorScheme colorScheme)
         {
             this.colorScheme = colorScheme;
+            selectedColor = colorScheme.Primary;
+            // TODO - ICommand wire-up to allow them to change selected color
         }
 
         public ColorScheme ColorScheme
@@ -21,6 +20,13 @@ namespace ThemeMatic.ViewModels
             get { return colorScheme; }
         }
 
+        private DesignColor selectedColor;
+        public DesignColor SelectedColor
+        {
+            get { return selectedColor; }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand ChangeSelectedColor { get; private set; }
     }
 }

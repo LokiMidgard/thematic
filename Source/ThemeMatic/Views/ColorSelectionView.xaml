@@ -53,7 +53,7 @@
             <TextBlock Text="Background"  FontSize="16" />
         </Button>
 
-        <Grid  Grid.Column="0" Grid.Row="2" DataContext="{Binding Primary}" Margin="2.5">
+        <Grid  Grid.Column="0" Grid.Row="2" DataContext="{Binding ColorScheme.Primary}" Margin="2.5">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -68,7 +68,7 @@
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
         </Grid>
 
-        <Grid Grid.Column="1" Grid.Row="2" DataContext="{Binding Secondary}" Margin="2.5">
+        <Grid Grid.Column="1" Grid.Row="2" DataContext="{Binding ColorScheme.Secondary}" Margin="2.5">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -83,7 +83,7 @@
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
         </Grid>
 
-        <Grid Grid.Column="2" Grid.Row="2" DataContext="{Binding Chrome}" Margin="2.5">
+        <Grid Grid.Column="2" Grid.Row="2" DataContext="{Binding ColorScheme.Chrome}" Margin="2.5">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -98,7 +98,7 @@
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
         </Grid>
 
-        <Grid Grid.Column="3" Grid.Row="2" DataContext="{Binding ChromeAlternate}" Margin="2.5">
+        <Grid Grid.Column="3" Grid.Row="2" DataContext="{Binding ColorScheme.ChromeAlternate}" Margin="2.5">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -113,7 +113,7 @@
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
         </Grid>
 
-        <Grid Grid.Column="4" Grid.Row="2" DataContext="{Binding Disabled}" Margin="2.5">
+        <Grid Grid.Column="4" Grid.Row="2" DataContext="{Binding ColorScheme.Disabled}" Margin="2.5">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -128,7 +128,7 @@
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
         </Grid>
 
-        <Grid Grid.Column="5" Grid.Row="2" DataContext="{Binding Foreground}" Margin="2.5">
+        <Grid Grid.Column="5" Grid.Row="2" DataContext="{Binding ColorScheme.Foreground}" Margin="2.5">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -143,7 +143,7 @@
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
         </Grid>
 
-        <Grid Grid.Column="6" Grid.Row="2" DataContext="{Binding Background}" Margin="2.5">
+        <Grid Grid.Column="6" Grid.Row="2" DataContext="{Binding ColorScheme.Background}" Margin="2.5">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -159,9 +159,10 @@
         </Grid>
 
         <Grid Grid.ColumnSpan="7" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image Source="../Resources/colorwheel.png" Stretch="Uniform" />
-            <Canvas  x:Name="selectionContainer">
-            </Canvas>
+            <Image Source="../Resources/colorwheel.png" Stretch="Uniform" x:Name="colorWheel" />
+            <Canvas  x:Name="selectionContainer" Width="{Binding ElementName=colorWheel, Path=ActualWidth}" Height="{Binding ElementName=colorWheel, Path=ActualHeight}" Background="Transparent" >
+                <Ellipse Width="12" Height="12" Stroke="Black" StrokeThickness="2.5" Fill="Transparent" x:Name="selectionElipse" />
+             </Canvas>
         </Grid>
         
     </Grid>

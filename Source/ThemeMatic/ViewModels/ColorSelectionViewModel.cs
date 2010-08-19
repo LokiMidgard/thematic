@@ -16,6 +16,11 @@ namespace ThemeMatic.ViewModels
             this.colorScheme = colorScheme;
         }
 
+        public ColorScheme ColorScheme
+        {
+            get { return colorScheme; }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

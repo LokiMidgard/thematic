@@ -13,11 +13,13 @@ namespace ThemeMatic.ViewModels
         public ApplicationViewModel(Design design)
         {
             this.design = design;
+            colorSelectionViewModel = new ColorSelectionViewModel(design.ColorScheme);
         }
 
-        public ColorScheme ColorScheme
+        private ColorSelectionViewModel colorSelectionViewModel;
+        public ColorSelectionViewModel ColorSelectionViewModel
         {
-            get { return design.ColorScheme; }
+            get { return colorSelectionViewModel; }
         }
     }
 }

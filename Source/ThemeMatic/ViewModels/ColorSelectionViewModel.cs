@@ -40,7 +40,6 @@ namespace ThemeMatic.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public ICommand ChangeSelectedColor { get; private set; }
         public ICommand SelectColorCommand { get; private set; }
     }
 }

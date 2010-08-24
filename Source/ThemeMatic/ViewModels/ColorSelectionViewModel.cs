@@ -1,5 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
+using ThemeMatic.Components;
+using ThemeMatic.Components.Extension;
 using ThemeMatic.Model;
 
 namespace ThemeMatic.ViewModels
@@ -12,7 +15,17 @@ namespace ThemeMatic.ViewModels
         {
             this.colorScheme = colorScheme;
             selectedColor = colorScheme.Primary;
-            // TODO - ICommand wire-up to allow them to change selected color
+            SelectColorCommand = new DelegateCommand(SelectColorExecute);
+        }
+
+        private void SelectColorExecute(object obj)
+        {
+            var color = obj as DesignColor;
+            if (color != null)
+            {
+                selectedColor = color;
+                this.Changed(() => this.SelectedColor, PropertyChanged);
+            }
         }
 
         public ColorScheme ColorScheme
@@ -28,5 +41,6 @@ namespace ThemeMatic.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand ChangeSelectedColor { get; private set; }
+        public ICommand SelectColorCommand { get; private set; }
     }
 }

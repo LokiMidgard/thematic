@@ -9,23 +9,44 @@ namespace ThemeMatic.Test.Components.Extension
         [Fact]
         public void CanRoundTripSimpleColor()
         {
-            var hue = Colors.Red.GetHue();
-            var sat = Colors.Red.GetSaturation();
-            var lightness = Colors.Red.GetLightness();
-            var outColor = ColorExtension.FromHSL(hue, sat, lightness);
-            Assert.Equal(Colors.Red, outColor);
+            CheckColor(Colors.Red);
         }
 
-        // this one is really close, but not exactly equal...one of the hex triplets is off by 1
         [Fact]
         public void CanRoundTripComplexColor()
         {
-            var hue = Colors.Plum.GetHue();
-            var sat = Colors.Plum.GetSaturation();
-            var lightness = Colors.Plum.GetLightness();
+            CheckColor(Colors.Plum);            
+        }
+
+        [Fact]
+        public void AllNamedColorsCanBeRoundTripped()
+        {
+            CheckColor(Colors.AliceBlue);
+            CheckColor(Colors.AntiqueWhite);
+            CheckColor(Colors.Aquamarine);
+            CheckColor(Colors.Azure);
+            CheckColor(Colors.Beige);
+            CheckColor(Colors.Bisque);
+            CheckColor(Colors.Black);
+            CheckColor(Colors.BlanchedAlmond);
+            CheckColor(Colors.Blue);
+            CheckColor(Colors.BlueViolet);
+            CheckColor(Colors.Brown);
+            CheckColor(Colors.BurlyWood);
+            CheckColor(Colors.CadetBlue);
+            CheckColor(Colors.Chartreuse);
+
+            // these ones fail
+            CheckColor(Colors.Aqua);
+        }
+
+        public void CheckColor(Color colorToCheck)
+        {
+            var hue = colorToCheck.GetHue();
+            var sat = colorToCheck.GetSaturation();
+            var lightness = colorToCheck.GetLightness();
             var outColor = ColorExtension.FromHSL(hue, sat, lightness);
-            Assert.Equal(Colors.Plum, outColor);
-            
+            Assert.Equal(colorToCheck, outColor);
         }
     }
 }

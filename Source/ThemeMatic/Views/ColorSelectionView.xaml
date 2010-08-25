@@ -158,12 +158,13 @@
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
         </Grid>
 
-        <Grid Grid.ColumnSpan="7" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid Grid.ColumnSpan="4" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Image Source="../Resources/colorwheel.png" Stretch="Uniform" x:Name="colorWheel" />
             <Canvas  x:Name="selectionContainer" Width="{Binding ElementName=colorWheel, Path=ActualWidth}" Height="{Binding ElementName=colorWheel, Path=ActualHeight}" Background="Transparent" >
                 <Ellipse Width="12" Height="12" Stroke="Black" StrokeThickness="2.5" Fill="Transparent" x:Name="selectionElipse" />
              </Canvas>
         </Grid>
+        <Slider Minimum="0" Maximum="1" Value="{Binding SelectedColorSaturation}" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="3" />
         
     </Grid>
 </UserControl>

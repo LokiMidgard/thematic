@@ -24,18 +24,18 @@ namespace ThemeMatic.Components.Extension
         }
 
         // returns the HUE
-        public static Single GetHue(this Color self)
+        public static double GetHue(this Color self)
         {
             if (self.R == self.G && self.G == self.B)
                 return 0; // Undefined - return 0 
 
-            float r = self.R / 255.0f;
-            float g = self.G / 255.0f;
-            float b = self.B / 255.0f;
+            double r = self.R / 255.0f;
+            double g = self.G / 255.0f;
+            double b = self.B / 255.0f;
 
-            float max, min;
-            float delta;
-            float hue = 0.0f;
+            double max, min;
+            double delta;
+            double hue = 0.0f;
 
             max = r; min = r;
 
@@ -65,17 +65,17 @@ namespace ThemeMatic.Components.Extension
             {
                 hue += 360.0f;
             }
-            return hue / 360;
+            return hue / 360f;
         }
 
         // System.Drawing.Color calls this GetBrightness but it returns the HSL value, not HSV/B so I changed the name
-        public static float GetLightness(this Color self)
+        public static double GetLightness(this Color self)
         {
-            float r = self.R / 255.0f;
-            float g = self.G / 255.0f;
-            float b = self.B / 255.0f;
+            double r = self.R / 255.0f;
+            double g = self.G / 255.0f;
+            double b = self.B / 255.0f;
 
-            float max, min;
+            double max, min;
 
             max = r; min = r;
 
@@ -88,14 +88,14 @@ namespace ThemeMatic.Components.Extension
             return (max + min) / 2;
         }
 
-        public static float GetSaturation(this Color self)
+        public static double GetSaturation(this Color self)
         {
-            float r = self.R / 255.0f;
-            float g = self.G / 255.0f;
-            float b = self.B / 255.0f;
+            double r = self.R / 255.0f;
+            double g = self.G / 255.0f;
+            double b = self.B / 255.0f;
 
-            float max, min;
-            float l, saturation = 0;
+            double max, min;
+            double l, saturation = 0;
 
             max = r; min = r;
 

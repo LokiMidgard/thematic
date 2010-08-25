@@ -14,7 +14,7 @@ namespace ThemeMatic.ViewModels
         public ColorSelectionViewModel(ColorScheme colorScheme)
         {
             this.colorScheme = colorScheme;
-            selectedColor = colorScheme.Primary;
+            SelectedColor = colorScheme.Primary;
             SelectColorCommand = new DelegateCommand(SelectColorExecute);
         }
 
@@ -23,8 +23,31 @@ namespace ThemeMatic.ViewModels
             var color = obj as DesignColor;
             if (color != null)
             {
-                selectedColor = color;
-                this.Changed(() => this.SelectedColor, PropertyChanged);
+                this.SelectedColor = color;
+            }
+        }
+
+        void SelectedColorChanged(object sender, EventArgs e)
+        {
+            this.Changed(() => SelectedColorSaturation, PropertyChanged);
+        }
+
+        public double SelectedColorSaturation
+        {
+            get
+            {
+                var saturation = selectedColor.Base.GetSaturation();
+                System.Diagnostics.Debug.WriteLine("saturation: " + saturation.ToString());
+                return saturation; 
+            
+            }
+            set 
+            { 
+                double saturation = selectedColor.Base.GetSaturation();
+                if (saturation == value) return;
+                double hue = selectedColor.Base.GetHue();
+                double lightness = selectedColor.Base.GetLightness();
+                selectedColor.Base = ColorExtension.FromHSL(hue, value, lightness);
             }
         }
 
@@ -37,6 +60,20 @@ namespace ThemeMatic.ViewModels
         public DesignColor SelectedColor
         {
             get { return selectedColor; }
+            set
+            {
+                if (selectedColor != null)
+                {
+                    selectedColor.ColorChanged -= SelectedColorChanged;
+                }
+                selectedColor = value;
+                if (selectedColor != null)
+                {
+                    selectedColor.ColorChanged += SelectedColorChanged;                    
+                }
+                this.Changed(() => SelectedColor, PropertyChanged);
+                this.Changed(() => SelectedColorSaturation, PropertyChanged);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

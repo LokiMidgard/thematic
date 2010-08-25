@@ -38,9 +38,9 @@ namespace ThemeMatic.Model
                     this.Changed(() => LightAccent2, PropertyChanged);
                     LightAccent1 = baseColor.GetTint(0.45);
                     this.Changed(() => LightAccent1, PropertyChanged);
-                    this.DarkAccent2 = baseColor.GetHue(0.4);
+                    this.DarkAccent2 = baseColor.GetDarkerHue(0.4);
                     this.Changed(() => DarkAccent2, PropertyChanged);
-                    this.DarkAccent1 = baseColor.GetHue(0.8);
+                    this.DarkAccent1 = baseColor.GetDarkerHue(0.8);
                     this.Changed(() => DarkAccent1, PropertyChanged);
                     if (this.ColorChanged != null)
                     {

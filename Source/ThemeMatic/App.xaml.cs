@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Windows;
-using ThemeMatic.Model;
-using ThemeMatic.ViewModels;
+﻿using System.Windows;
 
 namespace ThemeMatic
 {

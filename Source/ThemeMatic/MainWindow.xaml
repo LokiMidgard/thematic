@@ -40,7 +40,7 @@
 
         </TabControl>
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-            <Button  Width="100" Margin="0,5" Content="Preview"/>
+            <Button Command="{Binding PreviewCommand}" Width="100" Margin="0,5" Content="Preview"/>
             <Button  Width="100" Margin="5,5,0,5" Content="Generate"/>
         </StackPanel>
 

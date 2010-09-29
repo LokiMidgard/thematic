@@ -29,11 +29,8 @@ namespace ThemeMatic
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var design = new Design();
-            design.ColorScheme = new ColorScheme();
             var themeFactory = new ThemeFactory();
-            // TODO design.Theme = themeFactory.GetAllThemes().First();
-            var vm = new ApplicationViewModel(design, themeFactory.GetAllThemes());
+            var vm = new ApplicationViewModel(new Design(), themeFactory.GetAllThemes());
             this.DataContext = vm;
         }
     }

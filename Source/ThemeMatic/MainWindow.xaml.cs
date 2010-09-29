@@ -33,7 +33,7 @@ namespace ThemeMatic
             design.ColorScheme = new ColorScheme();
             var themeFactory = new ThemeFactory();
             // TODO design.Theme = themeFactory.GetAllThemes().First();
-            var vm = new ApplicationViewModel(design);
+            var vm = new ApplicationViewModel(design, themeFactory.GetAllThemes());
             this.DataContext = vm;
         }
     }

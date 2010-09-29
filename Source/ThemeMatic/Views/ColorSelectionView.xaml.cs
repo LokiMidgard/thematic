@@ -65,7 +65,7 @@ namespace ThemeMatic.Views
                     var color = GetColorFromPosition(position, colorWheel.Source as BitmapSource, selectionContainer);
                     if (color.A != 0)
                     {
-                        model.SelectedColor.Base = color;
+                        model.ColorWheelColor = color;
                         Canvas.SetLeft(selectionElipse, position.X - SelectionEllipseRadius);
                         Canvas.SetTop(selectionElipse, position.Y - SelectionEllipseRadius);
                     }

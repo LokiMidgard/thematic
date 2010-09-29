@@ -58,15 +58,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Components\ColorToBrushConverter.cs" />
+    <Compile Include="Components\DelayBinding.cs" />
+    <Compile Include="Components\DelayBindingExtension.cs" />
     <Compile Include="Components\DelegateCommand.cs" />
     <Compile Include="Model\ColorScheme.cs" />
     <Compile Include="Model\Design.cs" />
     <Compile Include="Model\DesignColor.cs" />
+    <Compile Include="Model\IThemeFactory.cs" />
     <Compile Include="Model\ThemeFactory.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="ViewModels\ColorSelectionViewModel.cs" />
+    <Compile Include="ViewModels\ThemeViewModel.cs" />
     <Compile Include="Views\ColorSelectionView.xaml.cs">
       <DependentUpon>ColorSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ThemeView.xaml.cs">
+      <DependentUpon>ThemeView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +205,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ThemeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Theme.cs" />
@@ -224,7 +235,9 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Themes\WPF\SimpleStyles\preview.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\colorwheel.png" />
   </ItemGroup>

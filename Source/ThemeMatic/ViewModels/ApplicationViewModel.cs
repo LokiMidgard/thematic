@@ -10,16 +10,23 @@ namespace ThemeMatic.ViewModels
     {
         private readonly Design design;
 
-        public ApplicationViewModel(Design design)
+        public ApplicationViewModel(Design design, List<Theme> allThemes)
         {
             this.design = design;
             colorSelectionViewModel = new ColorSelectionViewModel(design.ColorScheme);
+            themeViewModel = new ThemeViewModel(design, allThemes);
         }
 
         private ColorSelectionViewModel colorSelectionViewModel;
         public ColorSelectionViewModel ColorSelectionViewModel
         {
             get { return colorSelectionViewModel; }
+        }
+
+        private ThemeViewModel themeViewModel;
+        public ThemeViewModel ThemeViewModel
+        {
+            get { return themeViewModel; }
         }
     }
 }

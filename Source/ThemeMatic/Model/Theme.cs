@@ -34,12 +34,27 @@ namespace ThemeMatic.Model
                 if (baseResourceDictionaryUrl == value) return;
                 baseResourceDictionaryUrl = value;
                 this.Changed(() => BaseResourceDictionaryUrl, PropertyChanged);
+                this.dictionary = null;
+                this.Changed(() => BaseResourceDictionary, PropertyChanged);
             }
         }
 
+        private ResourceDictionary dictionary;
         public ResourceDictionary BaseResourceDictionary
         {
-            get { return null; /* TODO */ }
+            get 
+            {
+                if (dictionary == null && !string.IsNullOrEmpty(baseResourceDictionaryUrl))
+                {
+                    // just in case it's a pack URI (which it probably will be)
+                    if (!UriParser.IsKnownScheme("pack"))
+                        UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
+      
+                    Uri uri = new Uri(baseResourceDictionaryUrl, UriKind.RelativeOrAbsolute);
+                    dictionary = new ResourceDictionary() { Source = uri};
+                }
+                return dictionary;
+            }
         }
 
         private string description;

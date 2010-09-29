@@ -27,7 +27,7 @@
             </TabItem>
 
             <TabItem Header="Design">
-                
+                <Views:ThemeView DataContext="{Binding ThemeViewModel}" />
             </TabItem>
 
             <TabItem Header="Typgraphy" >

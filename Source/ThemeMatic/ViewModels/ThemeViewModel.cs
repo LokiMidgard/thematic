@@ -25,13 +25,12 @@ namespace ThemeMatic.ViewModels
             get { return allThemes; }
         }
 
-        private Theme theme;
         public Theme Theme
         {
             get { return design.Theme; }
             set
             {
-                if (theme == design.Theme) return;
+                if (value == design.Theme) return;
                 design.Theme = value;
                 this.Changed(() => Theme, PropertyChanged);
             }

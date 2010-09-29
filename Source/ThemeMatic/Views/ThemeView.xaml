@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              >
-    <Grid>
-        <ListBox ItemsSource="{Binding AllThemes}" SelectedItem="{Binding Theme}">
+        <ListBox ItemsSource="{Binding AllThemes}" SelectedItem="{Binding Theme}" Margin="5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -27,5 +26,4 @@
             </ListBox.ItemTemplate>
             
         </ListBox>
-    </Grid>
 </UserControl>

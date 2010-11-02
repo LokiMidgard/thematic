@@ -35,6 +35,9 @@ namespace ThemeMatic.Test.Components.Extension
             CheckColor(Colors.BurlyWood);
             CheckColor(Colors.CadetBlue);
             CheckColor(Colors.Chartreuse);
+            CheckColor(Colors.Chocolate);
+            CheckColor(Colors.Coral);
+            CheckColor(Colors.CornflowerBlue);
 
             // these ones fail
             CheckColor(Colors.Aqua);

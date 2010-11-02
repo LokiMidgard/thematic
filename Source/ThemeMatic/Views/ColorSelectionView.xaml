@@ -25,33 +25,33 @@
         <TextBlock Text="Window" Grid.Column="5" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" />
 
 
-        <Button Grid.Row="1" Grid.Column="0" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Primary}">
+        <RadioButton Grid.Row="1" Grid.Column="0" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Primary}">
             <TextBlock Text="Primary"  FontSize="16" />
-        </Button>
+        </RadioButton>
 
-        <Button Grid.Row="1" Grid.Column="1" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Secondary}">
+        <RadioButton Grid.Row="1" Grid.Column="1" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Secondary}">
             <TextBlock Text="Secondary"  FontSize="16" />
-        </Button>
+        </RadioButton>
 
-        <Button Grid.Row="1" Grid.Column="2" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Chrome}">
+        <RadioButton Grid.Row="1" Grid.Column="2" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Chrome}">
             <TextBlock Text="Chrome"  FontSize="16" />
-        </Button>
+        </RadioButton>
 
-        <Button Grid.Row="1" Grid.Column="3" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.ChromeAlternate}">
+        <RadioButton Grid.Row="1" Grid.Column="3" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.ChromeAlternate}">
             <TextBlock Text="Chrome Alternate"  FontSize="16" />
-        </Button>
+        </RadioButton>
 
-        <Button Grid.Row="1" Grid.Column="4" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Disabled}">
+        <RadioButton Grid.Row="1" Grid.Column="4" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Disabled}">
             <TextBlock Text="Disabled"  FontSize="16" />
-        </Button>
+        </RadioButton>
 
-        <Button Grid.Row="1" Grid.Column="5" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Foreground}">
+        <RadioButton Grid.Row="1" Grid.Column="5" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Foreground}">
             <TextBlock Text="Foreground"  FontSize="16" />
-        </Button>
+        </RadioButton>
 
-        <Button Grid.Row="1" Grid.Column="6" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Background}">
+        <RadioButton Grid.Row="1" Grid.Column="6" Command="{Binding SelectColorCommand}" CommandParameter="{Binding ColorScheme.Background}">
             <TextBlock Text="Background"  FontSize="16" />
-        </Button>
+        </RadioButton>
 
         <Grid  Grid.Column="0" Grid.Row="2" DataContext="{Binding ColorScheme.Primary}" Margin="2.5">
             <Grid.RowDefinitions>

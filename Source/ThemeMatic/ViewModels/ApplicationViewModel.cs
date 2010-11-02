@@ -11,8 +11,9 @@ namespace ThemeMatic.ViewModels
     public class ApplicationViewModel
     {
         private readonly Design design;
+        private readonly IMessagePresenter messagePresenter;
 
-        public ApplicationViewModel(Design design, List<Theme> allThemes)
+        public ApplicationViewModel(Design design, List<Theme> allThemes, IMessagePresenter messagePresenter)
         {
             if (allThemes == null || allThemes.Count == 0)
             {
@@ -20,6 +21,7 @@ namespace ThemeMatic.ViewModels
             }
 
             this.design = design;
+            this.messagePresenter = messagePresenter;
             design.ColorScheme = new ColorScheme();
             colorSelectionViewModel = new ColorSelectionViewModel(design.ColorScheme);
 
@@ -27,6 +29,21 @@ namespace ThemeMatic.ViewModels
             themeViewModel = new ThemeViewModel(design, allThemes);
 
             PreviewCommand = new DelegateCommand(PreviewExecute, CanPreviewExecute);
+            GenerateCommand = new DelegateCommand(GenerateExecute);
+
+            PropertiesViewModel = new PropertiesViewModel(this.design);
+        }
+
+        private void GenerateExecute(object obj)
+        {
+            if (this.PropertiesViewModel.IsOutputLocationValid() && !string.IsNullOrEmpty(design.ThemeAssemblyName) && !string.IsNullOrEmpty(design.ProjectName))
+            {
+                // do code generation
+            }
+            else
+            {
+                messagePresenter.ShowMessage("You must specify a valid output location for the generated code, a theme assembly name and a project name in the Properties tab.");
+            }
         }
 
         private void PreviewExecute(object obj)
@@ -54,6 +71,9 @@ namespace ThemeMatic.ViewModels
             get { return themeViewModel; }
         }
 
+        public PropertiesViewModel PropertiesViewModel { get; private set; }
+
         public ICommand PreviewCommand { get; private set; }
+        public ICommand GenerateCommand { get; private set; }
     }
 }

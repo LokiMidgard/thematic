@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ThemeMatic.Views.PropertiesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Project Name" Style="{StaticResource fieldLabel}" />
+        <TextBlock Text="Theme Assembly Name" Grid.Row="1" Style="{StaticResource fieldLabel}" />
+        <TextBlock Text="Output Directory" Grid.Row="2" Style="{StaticResource fieldLabel}" />
+
+        <TextBox Text="{Binding ProjectName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Style="{StaticResource formField}" Grid.ColumnSpan="2" />
+        <TextBox Text="{Binding ThemeAssemblyName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Style="{StaticResource formField}" Grid.ColumnSpan="2" />
+        <TextBox Text="{Binding OutputLocation, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource formField}" Grid.Row="2" Grid.Column="1"  />
+        <Button Content="..." Grid.Column="2" Grid.Row="2" Margin="0 3 3 3" />
+        <!-- TODO: make this do something -->
+
+    </Grid>
+</UserControl>

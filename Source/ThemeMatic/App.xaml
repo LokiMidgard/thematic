@@ -3,5 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Components="clr-namespace:ThemeMatic.Components" StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Components:ColorToBrushConverter x:Key="color2Brush" />
+        <Style x:Key="fieldLabel" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="formField" TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="3" />
+        </Style>       
     </Application.Resources>
 </Application>

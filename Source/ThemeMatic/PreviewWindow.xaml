@@ -225,7 +225,8 @@
             <!-- TabControl -->
             <HeaderedItemsControl  Header="TabControl">
                 <StackPanel Orientation="Horizontal">
-                    <TabControl Margin="8" Height="100" Width="225">
+                    
+                    <TabControl Margin="8" Height="100" Width="500">
                         <TabItem Header="One" />
                         <TabItem Header="Two" />
                         <TabItem Header="Three" />

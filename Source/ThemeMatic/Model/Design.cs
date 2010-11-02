@@ -37,6 +37,42 @@ namespace ThemeMatic.Model
             }
         }
 
+        private string outputLocation;
+        public string OutputLocation
+        {
+            get { return outputLocation; }
+            set
+            {
+                if (outputLocation == value) return;
+                outputLocation = value;
+                this.Changed(() => OutputLocation, PropertyChanged);
+            }
+        }
+
+        private string projectName;
+        public string ProjectName
+        {
+            get { return projectName; }
+            set
+            {
+                if (projectName == value) return;
+                projectName = value;
+                this.Changed(() => ProjectName, PropertyChanged);
+            }
+        }
+
+        private string themeAssemblyName;
+        public string ThemeAssemblyName
+        {
+            get { return themeAssemblyName; }
+            set
+            {
+                if (themeAssemblyName == value) return;
+                themeAssemblyName = value;
+                this.Changed(() => ThemeAssemblyName, PropertyChanged);
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

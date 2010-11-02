@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThemeMatic.Components;
 using ThemeMatic.Model;
 using ThemeMatic.ViewModels;
 
@@ -30,7 +31,7 @@ namespace ThemeMatic
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var themeFactory = new ThemeFactory();
-            var vm = new ApplicationViewModel(new Design(), themeFactory.GetAllThemes());
+            var vm = new ApplicationViewModel(new Design(), themeFactory.GetAllThemes(), new WindowsMessagePresenter());
             this.DataContext = vm;
         }
     }

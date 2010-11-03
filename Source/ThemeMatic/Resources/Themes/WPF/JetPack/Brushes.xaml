@@ -1,6 +1,46 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
 
+    <!-- branding -->
+    <Color x:Key="primaryBase" />
+    <Color x:Key="primaryLightAccent1" />
+    <Color x:Key="primaryLightAccent2"  />
+    <Color x:Key="primaryDarkAccent1"  />
+    <Color x:Key="primaryDarkAccent2"  />
+    <Color x:Key="secondaryBase" />
+    <Color x:Key="secondaryLightAccent1" />
+    <Color x:Key="secondaryLightAccent2"  />
+    <Color x:Key="secondaryDarkAccent1"  />
+    <Color x:Key="secondaryDarkAccent2"  />
+
+    <!-- control chrome -->
+    <Color x:Key="chromeBase" />
+    <Color x:Key="chromeLightAccent1" />
+    <Color x:Key="chromeLightAccent2"  />
+    <Color x:Key="chromeDarkAccent1"  />
+    <Color x:Key="chromeDarkAccent2"  />
+    <Color x:Key="chromeAlternateBase"  />
+    <Color x:Key="chromeAlternateLightAccent1"  />
+    <Color x:Key="chromeAlternateLightAccent2"  />
+    <Color x:Key="chromeAlternateDarkAccent1"  />
+    <Color x:Key="chromeAlternateDarkAccent2"  />
+    <Color x:Key="disabledBase"  />
+    <Color x:Key="disabledLightAccent1"  />
+    <Color x:Key="disabledLightAccent2"  />
+    <Color x:Key="disabledDarkAccent1"  />
+    <Color x:Key="disabledDarkAccent2"  />
+
+    <Color x:Key="foregroundBase"  />
+    <Color x:Key="foregroundLightAccent1"  />
+    <Color x:Key="foregroundLightAccent2"  />
+    <Color x:Key="foregroundDarkAccent1"  />
+    <Color x:Key="foregroundDarkAccent2"  />
+    <Color x:Key="backgroundBase"  />
+    <Color x:Key="backgroundLightAccent1"  />
+    <Color x:Key="backgroundLightAccent2"  />
+    <Color x:Key="backgroundDarkAccent1"  />
+    <Color x:Key="backgroundDarkAccent2"  />
+
     <!-- 
     ***************************************************************************
     Green Accents
@@ -8,13 +48,13 @@
     -->
 
     <LinearGradientBrush x:Key="InputSelectionBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FF98B913" Offset="0" />
-        <GradientStop Color="#FF75A20A" Offset="1" />
+        <GradientStop Color="{DynamicResource chromeAlternateBase}" Offset="0" />
+        <GradientStop Color="{DynamicResource chromeAlternateDarkAccent1}" Offset="1" /> <!-- TODO consider making this just a solid color brush on the chromeAlternateBase ...the two original colors where quite close -->
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="ColorAccentBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#BCD742" Offset="0" />
-        <GradientStop Color="#91B006" Offset="1" />
+        <GradientStop Color="{DynamicResource chromeAlternateLightAccent1}" Offset="0" />
+        <GradientStop Color="{DynamicResource chromeAlternateBase}" Offset="1" />
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="ColorAccentOverBrush" EndPoint="0.5,1" StartPoint="0.5,0">
@@ -104,44 +144,42 @@
     <SolidColorBrush x:Key="ControlForeground" Color="#FF202020" />
 
     <LinearGradientBrush x:Key="ControlBackgroundNormal" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFF7F7F7" Offset="0.164" />
-        <GradientStop Color="#FFC6C6C6" Offset="0.802" />
-        <GradientStop Color="#FFC6C6C6" Offset="0.953" />
+        <GradientStop Color="{DynamicResource chromeLightAccent1}" Offset="0.164" />
+        <GradientStop Color="{DynamicResource chromeBase}" Offset="0.802" />
+        <GradientStop Color="{DynamicResource chromeDarkAccent1}" Offset="0.953" />
     </LinearGradientBrush>
 
     <SolidColorBrush x:Key="ControlBackgroundAltBrush" Color="#FF57575C" />
 
     <LinearGradientBrush x:Key="ControlBackgroundOver" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="White" Offset="0.211" />
-        <GradientStop Color="#FFDEDEDE" Offset="0.784" />
+        <GradientStop Color="{DynamicResource chromeLightAccent2}" Offset="0.164" />
+        <GradientStop Color="{DynamicResource chromeLightAccent1}" Offset="0.702" />
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="ControlBackgroundPressed" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFCECECE" Offset="0.204" />
-        <GradientStop Color="#FFAFAFAF" Offset="0.864" />
+        <GradientStop Color="{DynamicResource chromeBase}" Offset="0.204" />
+        <GradientStop Color="{DynamicResource chromeDarkAccent1}" Offset="0.864" />
     </LinearGradientBrush>
 
     <SolidColorBrush x:Key="ControlOuterHighlightBrush" Color="#40FFFFFF" />
 
     <SolidColorBrush x:Key="ControlHighlight" Color="#80FFFFFF" />
 
-    <SolidColorBrush x:Key="ControlBorderBrush" Color="#FF686868" />
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="{DynamicResource chromeDarkAccent1}" />
 
-    <SolidColorBrush x:Key="ControlDarkEdge" Color="#FF2E2E30" />
+    <SolidColorBrush x:Key="ControlDarkEdge" Color="{DynamicResource chromeDarkAccent2}" />
 
     <LinearGradientBrush x:Key="StaticControlBackground" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFE2E2E2" Offset="0" />
-        <GradientStop Color="#FFC6C6C6" Offset="1" />
+        <GradientStop Color="{DynamicResource chromeBase}" Offset="0" />
+        <GradientStop Color="{DynamicResource chromeDarkAccent1}" Offset="1" />
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="StaticControlBackgroundOver" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFF8F8F8" Offset="0" />
-        <GradientStop Color="#FFD0D0D0" Offset="1" />
-    </LinearGradientBrush>
-
+        <GradientStop Color="{DynamicResource chromeLightAccent1}" Offset="0" />
+        <GradientStop Color="{DynamicResource chromeBase}" Offset="1" />    </LinearGradientBrush>
     <SolidColorBrush x:Key="InputBackgroundBrush" Color="White" />
 
-    <SolidColorBrush x:Key="InputForegroundBrush" Color="#FF404040" />
+    <SolidColorBrush x:Key="InputForegroundBrush" Color="{DynamicResource foregroundBase}" />
 
     <SolidColorBrush x:Key="InputSelectionForegroundBrush" Color="White" />
 
@@ -155,32 +193,32 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="DisabledBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FF9C9DA0" />
-        <GradientStop Color="#FF8B8C8E" Offset="1" />
+        <GradientStop Color="{DynamicResource disabledLightAccent1}" />
+        <GradientStop Color="{DynamicResource disabledBase}" Offset="1" />
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#66000000" />
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="{DynamicResource disabledDarkAccent1}" />
 
-    <SolidColorBrush x:Key="ReadOnlyBrush" Color="#40000000" />
+    <SolidColorBrush x:Key="ReadOnlyBrush" Color="{DynamicResource disabledBase}" />
 
     <SolidColorBrush x:Key="ErrorBrush" Color="#FFEF0A0A" />
 
     <LinearGradientBrush x:Key="CheckBoxBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Color="#FF57575C" Offset="0.3" />
-        <GradientStop Color="#FF55555A" Offset="0.5" />
-        <GradientStop Color="#FF4F4F54" Offset="1.0" />
+        <GradientStop Color="{DynamicResource chromeBase}" Offset="0.3" />
+        <GradientStop Color="{DynamicResource chromeDarkAccent1}" Offset="0.5" />
+        <GradientStop Color="{DynamicResource chromeDarkAccent2}" Offset="1.0" />
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="CheckBoxBorderBrush" Color="#FF343537" />
+    <SolidColorBrush x:Key="CheckBoxBorderBrush" Color="{DynamicResource chromeAlternateLightAccent1}" />
 
-    <SolidColorBrush x:Key="CheckBoxInnerShadowBrush" Color="#50303030" />
+    <SolidColorBrush x:Key="CheckBoxInnerShadowBrush" Color="{DynamicResource chromeDarkAccent2}" />
 
     <LinearGradientBrush x:Key="RadioButtonBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#FF505050" Offset="0.3" />
-        <GradientStop Color="#FF484848" Offset="1.0" />
+        <GradientStop Color="{DynamicResource chromeDarkAccent1}" Offset="0.3" />
+        <GradientStop Color="{DynamicResource chromeDarkAccent2}" Offset="1.0" />
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="RadioButtonBorderBrush" Color="#FF343537" />
+    <SolidColorBrush x:Key="RadioButtonBorderBrush" Color="{DynamicResource chromeBase}" />
 
     <RadialGradientBrush x:Key="RadioButtonInnerShadowBrush">
         <GradientStop Color="#00000000" Offset="0.5" />
@@ -199,10 +237,7 @@
 
     <SolidColorBrush x:Key="HyperlinkPressedBrush" Color="#FFB1D900" />
 
-    <LinearGradientBrush x:Key="MouseOverSelectionBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFEDEDEE" Offset="0" />
-        <GradientStop Color="#FFDEDEDF" Offset="1" />
-    </LinearGradientBrush>
+    <SolidColorBrush x:Key="MouseOverSelectionBrush" Color="{DynamicResource chromeAlternateLightAccent2}" />
 
     <SolidColorBrush x:Key="ScrollBackgroundBrush" Color="#FFDCDCDD" />
     <SolidColorBrush x:Key="ScrollBarDisabledBackground" Color="#77DCDCDD" />

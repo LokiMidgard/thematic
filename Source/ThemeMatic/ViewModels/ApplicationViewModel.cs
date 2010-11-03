@@ -12,8 +12,9 @@ namespace ThemeMatic.ViewModels
     {
         private readonly Design design;
         private readonly IMessagePresenter messagePresenter;
+        private readonly IProjectGenerator generator;
 
-        public ApplicationViewModel(Design design, List<Theme> allThemes, IMessagePresenter messagePresenter)
+        public ApplicationViewModel(Design design, List<Theme> allThemes, IMessagePresenter messagePresenter, IProjectGenerator generator)
         {
             if (allThemes == null || allThemes.Count == 0)
             {
@@ -22,6 +23,7 @@ namespace ThemeMatic.ViewModels
 
             this.design = design;
             this.messagePresenter = messagePresenter;
+            this.generator = generator;
             design.ColorScheme = new ColorScheme();
             colorSelectionViewModel = new ColorSelectionViewModel(design.ColorScheme);
 
@@ -38,7 +40,7 @@ namespace ThemeMatic.ViewModels
         {
             if (this.PropertiesViewModel.IsOutputLocationValid() && !string.IsNullOrEmpty(design.ThemeAssemblyName) && !string.IsNullOrEmpty(design.ProjectName))
             {
-                // do code generation
+                generator.Generate(design);
             }
             else
             {

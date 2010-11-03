@@ -2923,4 +2923,5 @@
         <Setter Property="Foreground" Value="{StaticResource NormalFontBrush}" />
     </Style>
 
+
 </ResourceDictionary>

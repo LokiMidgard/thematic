@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,11 +19,30 @@ using ThemeMatic.ViewModels;
 
 namespace ThemeMatic
 {
+
+ 
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [PreserveSig]
+        public static extern uint GetModuleFileName
+        (
+            [In]
+    IntPtr hModule,
+
+            [Out] 
+    StringBuilder lpFilename,
+
+            [In]
+    [MarshalAs(UnmanagedType.U4)]
+    int nSize
+);
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,9 +51,23 @@ namespace ThemeMatic
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+
+
             var themeFactory = new ThemeFactory();
-            var vm = new ApplicationViewModel(new Design(), themeFactory.GetAllThemes(), new WindowsMessagePresenter(), new SimpleProjectGenerator());
+            var vm = new ApplicationViewModel(new Design(), themeFactory.GetAllThemes(), new WindowsMessagePresenter(), new SimpleProjectGenerator(this.StartupPath));
             this.DataContext = vm;
         }
+
+        private string StartupPath
+        {
+            get
+            {
+                var buffer = new StringBuilder(1024);
+                GetModuleFileName(IntPtr.Zero, buffer, buffer.Capacity);
+                return System.IO.Path.GetDirectoryName(buffer.ToString());
+            }
+        }
+ 
+
     }
 }

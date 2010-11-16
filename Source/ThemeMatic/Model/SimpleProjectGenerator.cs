@@ -22,7 +22,7 @@ namespace ThemeMatic.Model
             {
                 throw  new ArgumentException("resource root path was not correctly specified");
             }
-            if (!File.Exists(resourceRootPath))
+            if (!Directory.Exists(resourceRootPath))
             {
                 throw new ArgumentException("resource root path does not exist");
             }

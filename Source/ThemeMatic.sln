@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeMatic", "ThemeMatic\ThemeMatic.csproj", "{60B89C8B-76AE-4E51-967B-4ADF6B124A70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMatic", "ThemeMatic\TheMatic.csproj", "{60B89C8B-76AE-4E51-967B-4ADF6B124A70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeMatic.Test", "ThemeMatic.Test\ThemeMatic.Test.csproj", "{36B89F66-7157-458C-B5BF-138E8DA253ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMatic.Test", "ThemeMatic.Test\TheMatic.Test.csproj", "{36B89F66-7157-458C-B5BF-138E8DA253ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

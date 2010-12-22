@@ -10,12 +10,6 @@ namespace ThemeMatic.Test.Model
 {
     public class SimpleProjectGeneratorTest
     {
-        [Fact]
-        public void NewProjectTextCanBeGeneratedFromDesign()
-        {
-            var simpleProjectGenerator = new SimpleProjectGenerator(Path.GetTempPath());
-            var newProjectContent = simpleProjectGenerator.GenerateNewProjectFileContents(null, new List<string>(){"..\\foo\\bar\\test.xaml"});
-            Assert.True(!string.IsNullOrEmpty(newProjectContent));
-        }
+
     }
 }

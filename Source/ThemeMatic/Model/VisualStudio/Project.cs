@@ -9,6 +9,13 @@ namespace ThemeMatic.Model.VisualStudio
 {
     public class Project
     {
+        public Project()
+        {
+            UniqueIdentifier = Guid.NewGuid();
+        }
+
+        public Guid UniqueIdentifier { get; private set; }
+
         private List<string> files = new List<string>();
 
         public string Name { get; set; }
@@ -50,7 +57,10 @@ namespace ThemeMatic.Model.VisualStudio
                 CreateParentFolder(absoluteTargetPath.ParentDirectoryPath);
             }
 
-            File.Copy(absoluteSourcePath, absoluteTargetPath.Path);
+            if (!File.Exists(absoluteTargetPath.Path))
+            {
+                File.Copy(absoluteSourcePath, absoluteTargetPath.Path);                
+            }
 
             files.Add(relativeTargetPath);
         }
@@ -67,7 +77,10 @@ namespace ThemeMatic.Model.VisualStudio
 
         public void Generate()
         {
-            // TODO - write out the project here
+            if (!File.Exists(FilePath))
+            {
+                
+            }
         }
 
         private string GenerateXamlFileNodeFragment(List<string> relativePathsFromProjectRootToXamlFiles)

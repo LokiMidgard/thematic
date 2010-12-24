@@ -52,7 +52,7 @@ namespace ThemeMatic.Model
             var sln = new Solution() {Directory = design.OutputLocation, Name = design.ProjectName};
             var themeProject = new Project() {ProjectType = ProjectType.Library, Name = design.ThemeAssemblyName, Directory = Path.Combine(design.OutputLocation, design.ThemeAssemblyName)};
             sln.Projects.Add(themeProject);
-            var sampleApplication = new Project() { ProjectType = ProjectType.WindowsExecutable, Name = design.ProjectName, Directory = Path.Combine(design.OutputLocation, design.ProjectName)};
+            var sampleApplication = new Project() { ProjectType = ProjectType.WinExe, Name = design.ProjectName, Directory = Path.Combine(design.OutputLocation, design.ProjectName)};
             sln.Projects.Add(sampleApplication);
 
             AddFilesToThemeProject(themeProject, design);

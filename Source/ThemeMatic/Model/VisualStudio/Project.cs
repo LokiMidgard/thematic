@@ -79,28 +79,59 @@ namespace ThemeMatic.Model.VisualStudio
         {
             if (!File.Exists(FilePath))
             {
-                
+                string projectContents = "<ItemGroup>\n";
+                foreach (var file in this.files)
+                {
+                    projectContents += GetProjectNodeForFile(file);
+                }
+                projectContents += "\n</ItemGroup>";
+
+                string projectFileContents = string.Format(ProjectFormatString, this.UniqueIdentifier, this.ProjectType, projectContents, this.Name);
+                using (var fileWriter = new StreamWriter(this.FilePath))
+                {
+                    fileWriter.Write(projectFileContents);
+                    fileWriter.Flush();
+                }
             }
         }
 
-        private string GenerateXamlFileNodeFragment(List<string> relativePathsFromProjectRootToXamlFiles)
+        private string GetProjectNodeForFile(string file)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (var item in relativePathsFromProjectRootToXamlFiles)
+            if (file == "App.xaml")
             {
-                sb.Append(
+                return @"	<ApplicationDefinition Include=""{{0}}"">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>";
+            }
+            else if (file.EndsWith(".xaml"))
+            {
+                return
                     string.Format(
-                        @"
-    <Page Include='{0}'>
+                        @"    <Page Include=""{0}"">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>",
-                        item));
+                        file);
             }
-            return sb.ToString();
+            else if (file.EndsWith(".xaml.cs"))
+            {
+                return
+                    string.Format(
+                        @"    <Compile Include=""{0}"">
+      <DependentUpon>{1}</DependentUpon>
+    </Compile>", file,
+                        file.Substring(0, file.Length - ".cs".Length /* remove trailling .cs */));
+            }
+            else if (file.EndsWith(".cs"))
+            {
+                return string.Format("<Compile Include=\"{0}\" />", file);
+            }
+            return string.Empty;
         }
 
-        private const string ThemeProjectSkeleton = @"<?xml version='1.0' encoding='utf-8'?>
+
+        private const string ProjectFormatString = @"<?xml version='1.0' encoding='utf-8'?>
 <Project ToolsVersion='4.0' DefaultTargets='Build' xmlns='http://schemas.microsoft.com/developer/msbuild/2003'>
   <PropertyGroup>
     <Configuration Condition="" '$(Configuration)' == '' "">Debug</Configuration>
@@ -108,10 +139,10 @@ namespace ThemeMatic.Model.VisualStudio
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{{{0}}}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>{1}</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ThemeTest</RootNamespace>
-    <AssemblyName>ThemeTest</AssemblyName>
+    <AssemblyName>{3}</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -146,61 +177,15 @@ namespace ThemeMatic.Model.VisualStudio
       <HintPath>C:\Windows\Microsoft.NET\Framework\v3.0\WPF\PresentationUI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    {1}
-  </ItemGroup>
+{2}
   <Import Project='$(MSBuildToolsPath)\Microsoft.CSharp.targets' />
 </Project>
 ";
-
-        private const string sampleUIProjectItems =
-    @"<ApplicationDefinition Include=""App.xaml"">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include=""MainWindow.xaml"">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include=""App.xaml.cs"">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include=""MainWindow.xaml.cs"">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include=""Properties\AssemblyInfo.cs"">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include=""Properties\Resources.Designer.cs"">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include=""Properties\Settings.Designer.cs"">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include=""Properties\Resources.resx"">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include=""Properties\Settings.settings"">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <AppDesigner Include=""Properties\"" />";
-
-
     }
 
     public enum ProjectType
     {
         Library,
-        WindowsExecutable
+        WinExe
     }
 }

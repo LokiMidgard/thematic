@@ -45,7 +45,7 @@ EndProject
 ";
 
         private const string projectBuildConfigurationsInSlnFormatString =
-            @"{{0}}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+            @"{{{0}}}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{{{0}}}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{{{0}}}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{{{0}}}.Release|Any CPU.Build.0 = Release|Any CPU";
@@ -76,8 +76,8 @@ EndGlobal";
                 foreach (var project in Projects)
                 {
                     var absoluteProjectPath = new DirectoryPathAbsolute(project.FilePath);
-                    headerString += string.Format(projectSectionInSlnFormatString, this.UniqueIdentifier, project.Name, absoluteProjectPath.GetPathRelativeFrom(absolutionSolutionPath).Path.Remove(0,3) /* removes the leading ..\ */, project.UniqueIdentifier);
-                    buildSection += string.Format(projectBuildConfigurationsInSlnFormatString, project.UniqueIdentifier);
+                    headerString += string.Format(projectSectionInSlnFormatString, this.UniqueIdentifier, project.Name, absoluteProjectPath.GetPathRelativeFrom(absolutionSolutionPath).Path.Remove(0, 3) /* removes the leading ..\ */, project.UniqueIdentifier.ToString().ToUpper());
+                    buildSection += string.Format(projectBuildConfigurationsInSlnFormatString, project.UniqueIdentifier.ToString().ToUpper());
                 }
 
                 using (var fileStream = new StreamWriter(FilePath))

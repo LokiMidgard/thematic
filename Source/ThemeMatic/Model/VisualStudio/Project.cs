@@ -97,9 +97,14 @@ namespace ThemeMatic.Model.VisualStudio
 
         private string GetProjectNodeForFile(string file)
         {
-            if (file == "App.xaml")
+            if (file.StartsWith(@".\"))
             {
-                return @"	<ApplicationDefinition Include=""{{0}}"">
+                file = file.Remove(0, 2);
+            }
+
+            if (file == "App.xaml" || file == @".\App.xaml")
+            {
+                return @"	<ApplicationDefinition Include=""App.xaml"">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>";

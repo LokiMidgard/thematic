@@ -22,6 +22,13 @@ namespace TestClientApplication
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Style = FindResource(typeof(Window)) as Style;
+            this.ApplyTemplate();
         }
     }
 }

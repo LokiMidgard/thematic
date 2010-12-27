@@ -59,17 +59,19 @@ namespace ThemeMatic.Model
             sln.Projects.Add(themeProject);
 
             AddFilesToThemeProject(themeProject, design);
-            AddFilesToSampleApplication(sampleApplication);
+            AddFilesToSampleApplication(sampleApplication, design);
             sampleApplication.References.Add(themeProject);
 
             sln.Generate();
         }
 
-        private void AddFilesToSampleApplication(Project sampleApplication)
+        private void AddFilesToSampleApplication(Project sampleApplication, Design design)
         {
             var sampleAppSourcePath = new DirectoryInfo(relativePathFromCurrentExecutableToSampleUiFolder);
             var absoluteSampleApplicationRoot = new DirectoryPathAbsolute(sampleAppSourcePath.FullName);
             AddAllFilesInPathToProject(absoluteSampleApplicationRoot, absoluteSampleApplicationRoot, sampleApplication);
+
+            sampleApplication.UpdateFileContents(@".\App.xaml.cs", str => string.Format(str, design.ThemeAssemblyName, design.Theme.Name));
         }
 
         private void AddFilesToThemeProject(Project themeProject, Design design)

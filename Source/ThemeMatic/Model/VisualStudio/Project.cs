@@ -67,6 +67,27 @@ namespace ThemeMatic.Model.VisualStudio
             files.Add(relativeTargetPath);
         }
 
+        public void UpdateFileContents(string relativeTargetPath, Func<string, string> updateMethod)
+        {
+            var filePathRelative = new FilePathRelative(relativeTargetPath);
+            var absoluteTargetPath = filePathRelative.GetAbsolutePathFrom(absoluteProjectRoot);
+            if (!File.Exists(absoluteTargetPath.Path))
+            {
+                throw new InvalidOperationException("The file you specified is not part of this project");
+            }
+            var currentFileContents = "";
+            using (var streamReader = new StreamReader(absoluteTargetPath.Path))
+            {
+                currentFileContents = streamReader.ReadToEnd();
+            }
+            var updatedContents = updateMethod.Invoke(currentFileContents);
+            using (var streamWriter = new StreamWriter(absoluteTargetPath.Path, false))
+            {
+                streamWriter.Write(updatedContents);
+                streamWriter.Flush();
+            }
+        }
+
         private void CreateParentFolder(DirectoryPathAbsolute directory)
         {
             if (!directory.ParentDirectoryPath.Exists)

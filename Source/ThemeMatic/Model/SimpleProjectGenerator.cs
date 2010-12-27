@@ -50,13 +50,17 @@ namespace ThemeMatic.Model
                 throw new ArgumentNullException("design");
             }
             var sln = new Solution() {Directory = design.OutputLocation, Name = design.ProjectName};
-            var themeProject = new Project() {ProjectType = ProjectType.Library, Name = design.ThemeAssemblyName, Directory = Path.Combine(design.OutputLocation, design.ThemeAssemblyName)};
-            sln.Projects.Add(themeProject);
+            
+            // The order that the items are added to the solution affects which one it chooses as the startup project. We want the sample app to be the startup project
             var sampleApplication = new Project() { ProjectType = ProjectType.WinExe, Name = design.ProjectName, Directory = Path.Combine(design.OutputLocation, design.ProjectName)};
             sln.Projects.Add(sampleApplication);
 
+            var themeProject = new Project() { ProjectType = ProjectType.Library, Name = design.ThemeAssemblyName, Directory = Path.Combine(design.OutputLocation, design.ThemeAssemblyName) };
+            sln.Projects.Add(themeProject);
+
             AddFilesToThemeProject(themeProject, design);
             AddFilesToSampleApplication(sampleApplication);
+            sampleApplication.References.Add(themeProject);
 
             sln.Generate();
         }

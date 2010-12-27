@@ -12,11 +12,13 @@ namespace ThemeMatic.Model.VisualStudio
         public Project()
         {
             UniqueIdentifier = Guid.NewGuid();
+            References = new List<Project>();
         }
 
         public Guid UniqueIdentifier { get; private set; }
 
         private List<string> files = new List<string>();
+        public List<Project> References { get; private set; }
 
         public string Name { get; set; }
 
@@ -79,20 +81,55 @@ namespace ThemeMatic.Model.VisualStudio
         {
             if (!File.Exists(FilePath))
             {
-                string projectContents = "<ItemGroup>\n";
-                foreach (var file in this.files)
-                {
-                    projectContents += GetProjectNodeForFile(file);
-                }
-                projectContents += "\n</ItemGroup>";
-
-                string projectFileContents = string.Format(ProjectFormatString, this.UniqueIdentifier, this.ProjectType, projectContents, this.Name);
+                var projectContents = GetProjectContents();
+                var projectReferences = GetProjectReferences();
+                string projectFileContents = string.Format(ProjectFormatString, this.UniqueIdentifier, this.ProjectType, projectContents, this.Name, projectReferences);
                 using (var fileWriter = new StreamWriter(this.FilePath))
                 {
                     fileWriter.Write(projectFileContents);
                     fileWriter.Flush();
                 }
             }
+        }
+
+        private string GetProjectReferences()
+        {
+            if (this.References.Count > 0)
+            {
+                var projectReferences = startItemGroup;
+                var absoluteProjectFile = new FilePathAbsolute(this.FilePath);
+                foreach (var reference in References)
+                {
+                    var referencedProjectFile = new FilePathAbsolute(reference.FilePath);
+                    projectReferences += string.Format(ProjectReferenceFormatString,
+                                                       referencedProjectFile.GetPathRelativeFrom(
+                                                           absoluteProjectFile.ParentDirectoryPath).Path,
+                                                       reference.UniqueIdentifier.ToString().ToUpper(), reference.Name);
+                }
+                projectReferences += endItemGroup;
+
+                return projectReferences;
+            }
+            return "";
+        }
+
+        private const string ProjectReferenceFormatString = @"<ProjectReference Include=""{0}"">
+      <Project>{{{1}}}</Project>
+      <Name>{2}</Name>
+    </ProjectReference>";
+
+        private const string startItemGroup = "<ItemGroup>\n";
+        private const string endItemGroup = "\n</ItemGroup>";
+
+        private string GetProjectContents()
+        {
+            string projectContents = startItemGroup;
+            foreach (var file in this.files)
+            {
+                projectContents += GetProjectNodeForFile(file);
+            }
+            projectContents += endItemGroup;
+            return projectContents;
         }
 
         private string GetProjectNodeForFile(string file)
@@ -134,6 +171,7 @@ namespace ThemeMatic.Model.VisualStudio
             }
             return string.Empty;
         }
+
 
 
         private const string ProjectFormatString = @"<?xml version='1.0' encoding='utf-8'?>
@@ -183,6 +221,7 @@ namespace ThemeMatic.Model.VisualStudio
     </Reference>
   </ItemGroup>
 {2}
+{4}
   <Import Project='$(MSBuildToolsPath)\Microsoft.CSharp.targets' />
 </Project>
 ";

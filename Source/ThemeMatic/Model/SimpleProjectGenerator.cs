@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Markup;
+using System.Windows.Media;
+using System.Xml;
 using NDepend.Helpers.FileDirectoryPath;
 using ThemeMatic.Model.VisualStudio;
 
@@ -20,6 +22,7 @@ namespace ThemeMatic.Model
         private const string relativePathFromCurrentExecutableToSampleUiFolder = @"Resources\UIStarterProject";
         private Guid themeProjectGuid;
         private Guid applicationUiProjectGuid;
+        private Design design;
 
         public SimpleProjectGenerator(string resourceRootPath)
         {
@@ -82,7 +85,11 @@ namespace ThemeMatic.Model
             AddAllFilesInPathToProject(absoluteThemeFileRoot, new DirectoryPathAbsolute(startThemeCopyDirectory.FullName), themeProject);
             string baseResourceDictionaryName = Path.Combine(relativePathFromCurrentExecutableToWpfThemes, design.Theme.Name + ".xaml");
             themeProject.AddFile(new FileInfo(baseResourceDictionaryName).FullName, ".\\" + baseResourceDictionaryName);
+
+            themeProject.UpdateFileContents(@".\Resources\Themes\Wpf\" + design.Theme.Name + ".xaml", new ColorUpdater(design).UpdateThemeColors);
         }
+
+        
 
         private void AddAllFilesInPathToProject(DirectoryPathAbsolute absoluteSampleApplicationRoot, DirectoryPathAbsolute currentFolder, Project project)
         {
@@ -95,6 +102,72 @@ namespace ThemeMatic.Model
             {
                 AddAllFilesInPathToProject(absoluteSampleApplicationRoot, subdirectory, project);
             }
+        }
+    }
+
+    public class ColorUpdater
+    {
+        private readonly Design design;
+
+        public ColorUpdater(Design design)
+        {
+            this.design = design;
+        }
+
+        public string UpdateThemeColors(string input)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(input);
+            var nsManager = new XmlNamespaceManager(doc.NameTable);
+            nsManager.AddNamespace("x",  XamlNamespaceUri);
+            nsManager.AddNamespace("d", WpfNamespaceUri);
+            
+            // update the colors
+            UpdateColor(doc, nsManager, design.ColorScheme.Primary.Name, design.ColorScheme.Primary);
+            UpdateColor(doc, nsManager, design.ColorScheme.Secondary.Name, design.ColorScheme.Secondary);
+            UpdateColor(doc, nsManager, design.ColorScheme.Chrome.Name, design.ColorScheme.Chrome);
+            UpdateColor(doc, nsManager, design.ColorScheme.ChromeAlternate.Name, design.ColorScheme.ChromeAlternate);
+            UpdateColor(doc, nsManager, design.ColorScheme.Disabled.Name, design.ColorScheme.Disabled);
+            UpdateColor(doc, nsManager, design.ColorScheme.Foreground.Name, design.ColorScheme.Foreground);
+            UpdateColor(doc, nsManager, design.ColorScheme.Background.Name, design.ColorScheme.Background);
+            
+            var sb = new StringBuilder();
+            doc.WriteTo(new XmlTextWriter(new StringWriter(sb)));
+            return sb.ToString();
+        }
+
+        private const string WpfNamespaceUri = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
+        private const string XamlNamespaceUri = "http://schemas.microsoft.com/winfx/2006/xaml";
+
+        private void UpdateColor(XmlDocument doc, XmlNamespaceManager nsManager, string name, DesignColor designColor)
+        {
+            UpdateItem(doc, nsManager, name + "Base", designColor.Base);
+            UpdateItem(doc, nsManager, name + "LightAccent1", designColor.LightAccent1);
+            UpdateItem(doc, nsManager, name + "LightAccent2", designColor.LightAccent2);
+            UpdateItem(doc, nsManager, name + "DarkAccent1", designColor.DarkAccent1);
+            UpdateItem(doc, nsManager, name + "DarkAccent2", designColor.DarkAccent2);
+        }
+
+        private void UpdateItem(XmlDocument doc, XmlNamespaceManager nsManager, string name, Color color)
+        {
+            string query = "//*/d:Color[attribute::x:Key=\"" + name + "\"]";
+            System.Diagnostics.Debug.WriteLine(query);
+            var node = doc.SelectSingleNode(query, nsManager);
+            if (node == null)
+            {
+                throw new InvalidOperationException("Unable to find color node " + name);
+            }
+            SetColorAttribute(doc, node, "R", color.R);
+            SetColorAttribute(doc, node, "G", color.G);
+            SetColorAttribute(doc, node, "B", color.B);
+            SetColorAttribute(doc, node, "A", color.A);
+        }
+
+        private void SetColorAttribute(XmlDocument doc, XmlNode node, string RgbaName, byte value)
+        {
+            var attribute = doc.CreateAttribute(null, RgbaName, doc.NamespaceURI);
+            attribute.Value = value.ToString();
+            node.Attributes.Append(attribute);
         }
     }
 }

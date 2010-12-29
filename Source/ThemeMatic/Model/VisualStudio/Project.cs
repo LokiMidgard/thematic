@@ -45,7 +45,7 @@ namespace ThemeMatic.Model.VisualStudio
 
         public ProjectType ProjectType { get; set; }
 
-        public void AddFile(string absoluteSourcePath, string relativeTargetPath)
+        public void AddFile(string absoluteSourcePath, string relativeTargetPath, Func<string, string> postCopyUpdateFileContentsMethod)
         {
             if (!File.Exists(absoluteSourcePath))
             {
@@ -64,7 +64,17 @@ namespace ThemeMatic.Model.VisualStudio
                 File.Copy(absoluteSourcePath, absoluteTargetPath.Path);                
             }
 
+            if (postCopyUpdateFileContentsMethod != null)
+            {
+                UpdateFileContents(relativeTargetPath, postCopyUpdateFileContentsMethod);
+            }
+
             files.Add(relativeTargetPath);
+        }
+
+        public void AddFile(string absoluteSourcePath, string relativeTargetPath)
+        {
+            AddFile(absoluteSourcePath, relativeTargetPath, null);
         }
 
         public void UpdateFileContents(string relativeTargetPath, Func<string, string> updateMethod)

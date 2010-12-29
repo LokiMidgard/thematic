@@ -51,6 +51,10 @@ namespace ThemeMatic.Model
 
         }
 
+        public string Name
+        {
+            get { return name; }
+        }
 
         public void UpdateReferences(ResourceDictionary dictionary)
         {

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="ThemeMatic.PreviewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PreviewWindow" Height="480" Width="640">
+        Title="Preview of your theme" Height="480" Width="640" Icon="thematic_titlebar.ico">
     <ScrollViewer>
         <WrapPanel>
 

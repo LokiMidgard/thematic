@@ -28,7 +28,7 @@
         <GradientStop Color="#FF5A8100" Offset="0.78" />
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="ColorAccentHighlightBrush" Color="#c2df00" />
+    <SolidColorBrush x:Key="ColorAccentHighlightBrush" Color="{DynamicResource chromeAlternateBase}" />
     <SolidColorBrush x:Key="ColorAccentSolidBrush" Color="#FF75A20A" />
 
     <!-- 

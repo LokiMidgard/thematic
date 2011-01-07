@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ThemeMatic</RootNamespace>
-    <AssemblyName>ThemeMatic</AssemblyName>
+    <AssemblyName>Thematic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -34,6 +34,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>thematic.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NDepend.Helpers.FileDirectoryPath">
@@ -78,6 +81,9 @@
     <Compile Include="PreviewWindow.xaml.cs">
       <DependentUpon>PreviewWindow.xaml</DependentUpon>
     </Compile>
+    <Resource Include="thematic_titlebar.ico" />
+    <Resource Include="thematic.ico" />
+    <Resource Include="Resources\thematic_logo.png" />
     <Content Include="Resources\UIStarterProject\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

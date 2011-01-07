@@ -548,7 +548,7 @@ VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                     </Border.Effect>
                 </Border>
                 <Border x:Name="NormalElement" Height="6" VerticalAlignment="Top" CornerRadius="1,1,0,0"
-                        Background="{StaticResource ControlBackgroundNormalGreen}" />
+                        Background="{StaticResource ControlBackgroundNormal}" />
                 <TextBlock Text="16" FontSize="14" Foreground="#FF292D2F" FontWeight="Bold" FontFamily="Arial"
                         Margin="0,6,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <Border x:Name="MouseOverElement" Height="6" Background="{StaticResource ControlBackgroundOverGreen}"

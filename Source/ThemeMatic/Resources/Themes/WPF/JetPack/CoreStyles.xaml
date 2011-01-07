@@ -190,7 +190,7 @@
                             <Border BorderBrush="{StaticResource DisabledBorderBrush}" BorderThickness="0,0,1,1"
                                     CornerRadius="2" />
                         </Border>
-                        <Border x:Name="NormalElement" Background="{StaticResource ControlBackgroundNormalGreen}"
+                        <Border x:Name="NormalElement" Background="{StaticResource ControlBackgroundNormal}"
                                 CornerRadius="2" Effect="{StaticResource ControlShadowEffect}" />
                         <Border x:Name="MouseOverElement" Background="{StaticResource ControlBackgroundOverGreen}"
                                 CornerRadius="2" Opacity="0" />
@@ -626,7 +626,7 @@
 
     <!-- TODO -->
     <Style TargetType="ToolTip">
-        <Setter Property="Background" Value="{StaticResource ControlBackgroundNormalGreen}" />
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundNormal}" />
         <Setter Property="FontFamily" Value="{StaticResource ContentFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
         <Setter Property="Foreground" Value="{StaticResource InputSelectionForegroundBrush}" />

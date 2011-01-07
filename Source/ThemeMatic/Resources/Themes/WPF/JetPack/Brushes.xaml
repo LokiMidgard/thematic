@@ -28,77 +28,10 @@
         <GradientStop Color="#FF5A8100" Offset="0.78" />
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="ColorAccentHighlightBrush" Color="{DynamicResource chromeAlternateBase}" />
-    <SolidColorBrush x:Key="ColorAccentSolidBrush" Color="#FF75A20A" />
-
-    <!-- 
-    ***************************************************************************
-    Orange Accents (Remove Comments to Enable)
-    ***************************************************************************
-    -->
-
-    <!--
-    <LinearGradientBrush x:Key="InputSelectionBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#ffb629" Offset="0" />
-        <GradientStop Color="#FE770A" Offset="1" />
-    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ColorAccentHighlightBrush" Color="{DynamicResource chromeAlternateLightAccent1}" />
+    <SolidColorBrush x:Key="ColorAccentSolidBrush" Color="{DynamicResource chromeAlternateBase}" />
 
 
-    <LinearGradientBrush x:Key="ColorAccentBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#ffb72c" Offset="0" />
-        <GradientStop Color="#ff8700" Offset="1" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ColorAccentOverBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#ffc149" Offset="0" />
-        <GradientStop Color="#ff9800" Offset="1" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ColorAccentSubduedBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFCE5300" Offset="1" />
-        <GradientStop Color="#FFDD870D" />
-    </LinearGradientBrush>
-
-    <SolidColorBrush x:Key="ColorAccentHighlightBrush" Color="#FFFFC600" />
-    <SolidColorBrush x:Key="ColorAccentSolidBrush" Color="#FE770A" />
-    -->
-
-    <!-- 
-    ***************************************************************************
-    Blue Accents (Remove Comments to Enable)
-    ***************************************************************************
-    -->
-
-    <!--
-    <LinearGradientBrush x:Key="InputSelectionBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#42baff" Offset="0" />
-        <GradientStop Color="#148cd1" Offset="1" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ColorAccentBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#42baff" Offset="0" />
-        <GradientStop Color="#148cd1" Offset="1" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ColorAccentOverBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#74cdff" Offset="1" />
-        <GradientStop Color="#1a9ee8" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ColorAccentSubduedBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#1aa0ec" Offset="0.31" />
-        <GradientStop Color="#0072be" Offset="0.78" />
-    </LinearGradientBrush>
-
-    <SolidColorBrush x:Key="ColorAccentHighlightBrush" Color="#8ddbff" />
-    <SolidColorBrush x:Key="ColorAccentSolidBrush" Color="#148cd1" />
-    -->
-
-    <!-- 
-    ***************************************************************************
-    General Brushes and Colors
-    ***************************************************************************
-    -->
 
     <Color x:Key="ColorForegroundShadowColor">#FFFFFF</Color>
 
@@ -241,10 +174,7 @@
     <Color x:Key="ControlForegroundGreenColor">#FFFFFFFF</Color>
     <SolidColorBrush x:Key="ControlForegroundGreen" Color="{StaticResource ControlForegroundGreenColor}" />
     <SolidColorBrush x:Key="HighlightBrushGreen" Color="#BED126" />
-    <LinearGradientBrush x:Key="ControlBackgroundNormalGreen" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFA0BB0E" Offset="0.176" />
-        <GradientStop Color="#FF6D9700" Offset="0.894" />
-    </LinearGradientBrush>
+    
     <LinearGradientBrush x:Key="ControlBackgroundOverGreen" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="#FFAECC07" Offset="0.228" />
         <GradientStop Color="#FF83B100" Offset="0.849" />

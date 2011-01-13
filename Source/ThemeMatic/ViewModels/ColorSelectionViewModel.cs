@@ -100,6 +100,10 @@ namespace ThemeMatic.ViewModels
                 }
                 this.Changed(() => SelectedColor, PropertyChanged);
                 this.Changed(() => SelectedColorSaturation, PropertyChanged);
+                this.Changed(() => SelectedColorLightness, PropertyChanged);
+                var hue = selectedColor.Base.GetHue();
+                UpdateSaturationFill(hue);
+                UpdateLightnessFill(hue);
             }
         }
 

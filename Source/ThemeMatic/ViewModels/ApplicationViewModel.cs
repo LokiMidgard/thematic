@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using ThemeMatic.Components;
 using ThemeMatic.Model;
@@ -13,6 +14,7 @@ namespace ThemeMatic.ViewModels
         private readonly Design design;
         private readonly IMessagePresenter messagePresenter;
         private readonly IProjectGenerator generator;
+        private PreviewWindow previewWindow;
 
         public ApplicationViewModel(Design design, List<Theme> allThemes, IMessagePresenter messagePresenter, IProjectGenerator generator)
         {
@@ -29,11 +31,20 @@ namespace ThemeMatic.ViewModels
 
             design.Theme = allThemes[0];
             themeViewModel = new ThemeViewModel(design, allThemes);
+            themeViewModel.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(themeViewModel_PropertyChanged);
 
             PreviewCommand = new DelegateCommand(PreviewExecute, CanPreviewExecute);
             GenerateCommand = new DelegateCommand(GenerateExecute);
 
             PropertiesViewModel = new PropertiesViewModel(this.design);
+        }
+
+        void themeViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Theme")
+            {
+                PreviewCommand.Execute(null);
+            }
         }
 
         private void GenerateExecute(object obj)
@@ -50,7 +61,24 @@ namespace ThemeMatic.ViewModels
 
         private void PreviewExecute(object obj)
         {
-            var previewWindow = new PreviewWindow();
+            if (previewWindow != null)
+            {
+                previewWindow.Close();
+            }
+            
+            var mainWindow = App.Current.MainWindow;
+            previewWindow = new PreviewWindow();
+            previewWindow.Owner = mainWindow;
+            if (mainWindow.WindowState == WindowState.Maximized)
+            {
+                previewWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            }
+            else
+            {
+                previewWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+                previewWindow.Top = mainWindow.Top;
+                previewWindow.Left = mainWindow.Left + mainWindow.Width;                
+            }
             previewWindow.Resources.Clear();
             previewWindow.Resources.MergedDictionaries.Add(design.Theme.BaseResourceDictionary);
             previewWindow.Show();

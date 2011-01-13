@@ -29,8 +29,8 @@
                 <Views:ThemeView DataContext="{Binding ThemeViewModel}" />
             </TabItem>
 
-            <TabItem Header="Typgraphy" >
-
+            <TabItem Header="Typography" >
+                <TextBlock Text="Coming soon" />
             </TabItem>
 
             <TabItem Header="Properties" >
@@ -39,7 +39,6 @@
 
         </TabControl>
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-            <Button Command="{Binding PreviewCommand}" Width="100" Margin="0,5" Content="Preview"/>
             <Button Command="{Binding GenerateCommand}"  Width="100" Margin="5,5,0,5" Content="Generate"/>
         </StackPanel>
 

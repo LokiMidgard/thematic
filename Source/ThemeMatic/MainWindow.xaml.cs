@@ -51,11 +51,10 @@ namespace ThemeMatic
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
-
             var themeFactory = new ThemeFactory();
             var vm = new ApplicationViewModel(new Design(), themeFactory.GetAllThemes(), new WindowsMessagePresenter(), new SimpleProjectGenerator(this.StartupPath));
             this.DataContext = vm;
+            vm.PreviewCommand.Execute(null);
         }
 
         private string StartupPath

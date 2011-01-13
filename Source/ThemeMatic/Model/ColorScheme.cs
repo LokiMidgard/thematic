@@ -14,23 +14,23 @@ namespace ThemeMatic.Model
         public ColorScheme()
         {
             // branding colors
-            Primary = new DesignColor(Colors.Gray, "primary");
+            Primary = new DesignColor(Colors.Red, "primary");
             Primary.ColorChanged += ColorChanged;
-            Secondary = new DesignColor(Colors.Gray, "secondary");
+            Secondary = new DesignColor(Colors.Orange, "secondary");
             Secondary.ColorChanged += ColorChanged;
 
             // chrome colors
             Chrome = new DesignColor(Colors.Gray, "chrome");
             Chrome.ColorChanged += ColorChanged;
-            ChromeAlternate = new DesignColor(Colors.Gray, "chromeAlternate");
+            ChromeAlternate = new DesignColor(Colors.Orange, "chromeAlternate");
             ChromeAlternate.ColorChanged += ColorChanged;
-            Disabled = new DesignColor(Colors.Gray, "disabled");
+            Disabled = new DesignColor(Colors.DarkGray, "disabled");
             Disabled.ColorChanged += ColorChanged;
 
             // foreground and background
-            Foreground = new DesignColor(Colors.Gray, "foreground");
+            Foreground = new DesignColor(Colors.Black, "foreground");
             Foreground.ColorChanged += ColorChanged;
-            Background = new DesignColor(Colors.Gray, "background");
+            Background = new DesignColor(Colors.White, "background");
             Background.ColorChanged += ColorChanged;
         }
 

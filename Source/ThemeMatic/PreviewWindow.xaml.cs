@@ -22,6 +22,7 @@ namespace ThemeMatic
         {
             InitializeComponent();
             this.Loaded += new RoutedEventHandler(PreviewWindow_Loaded);
+            
         }
 
         void PreviewWindow_Loaded(object sender, RoutedEventArgs e)

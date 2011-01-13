@@ -4,10 +4,10 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="40" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="3*" />
+            <RowDefinition Height="4*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -64,12 +64,14 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
             <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
             <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
             <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+            <TextBox Text="{Binding Base}" Grid.Row="5" Margin="2" />
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="2" DataContext="{Binding ColorScheme.Secondary}" Margin="2.5">
@@ -79,12 +81,14 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
             <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
             <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
             <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+            <TextBox Text="{Binding Base}" Grid.Row="5" Margin="2" />
         </Grid>
 
         <Grid Grid.Column="3" Grid.Row="2" DataContext="{Binding ColorScheme.Chrome}" Margin="2.5">
@@ -94,12 +98,14 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
             <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
             <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
             <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+            <TextBox Text="{Binding Base}" Grid.Row="5" Margin="2" />
         </Grid>
 
         <Grid Grid.Column="4" Grid.Row="2" DataContext="{Binding ColorScheme.ChromeAlternate}" Margin="2.5">
@@ -109,12 +115,14 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
             <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
             <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
             <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+            <TextBox Text="{Binding Base}" Grid.Row="5" Margin="2" />
         </Grid>
 
         <Grid Grid.Column="5" Grid.Row="2" DataContext="{Binding ColorScheme.Disabled}" Margin="2.5">
@@ -124,12 +132,14 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
             <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
             <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
             <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+            <TextBox Text="{Binding Base}" Grid.Row="5" Margin="2" />
         </Grid>
 
         <Grid Grid.Column="7" Grid.Row="2" DataContext="{Binding ColorScheme.Foreground}" Margin="2.5">
@@ -139,12 +149,14 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
             <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
             <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
             <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+            <TextBox Text="{Binding Base}" Grid.Row="5" Margin="2" />
         </Grid>
 
         <Grid Grid.Column="8" Grid.Row="2" DataContext="{Binding ColorScheme.Background}" Margin="2.5">
@@ -154,12 +166,14 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Rectangle Fill="{Binding LightAccent2, Converter={StaticResource color2Brush}}" Grid.Row="0" />
             <Rectangle Fill="{Binding LightAccent1, Converter={StaticResource color2Brush}}" Grid.Row="1" />
             <Rectangle Fill="{Binding Base, Converter={StaticResource color2Brush}}" Grid.Row="2" />
             <Rectangle Fill="{Binding DarkAccent1, Converter={StaticResource color2Brush}}" Grid.Row="3" />
             <Rectangle Fill="{Binding DarkAccent2, Converter={StaticResource color2Brush}}" Grid.Row="4" />
+            <TextBox Text="{Binding Base}" Grid.Row="5" Margin="2" />
         </Grid>
 
         <Grid Grid.ColumnSpan="5" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">

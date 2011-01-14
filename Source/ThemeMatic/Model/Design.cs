@@ -61,6 +61,18 @@ namespace ThemeMatic.Model
             }
         }
 
+        private bool showInWindowsExplorerAfterGenerate;
+        public bool ShowInWindowsExplorerAfterGenerate
+        {
+            get { return showInWindowsExplorerAfterGenerate; }
+            set
+            {
+                if (showInWindowsExplorerAfterGenerate == value) return;
+                showInWindowsExplorerAfterGenerate = value;
+                this.Changed(() => ShowInWindowsExplorerAfterGenerate, PropertyChanged);
+            }
+        }
+
         private string themeAssemblyName;
         public string ThemeAssemblyName
         {

@@ -31,6 +31,18 @@ namespace ThemeMatic.ViewModels
 
         private bool settingThemeAssemblyName;
 
+
+        public bool ShowInWindowsExplorerAfterGenerate
+        {
+            get { return design.ShowInWindowsExplorerAfterGenerate; }
+            set
+            {
+                if (design.ShowInWindowsExplorerAfterGenerate == value) return;
+                design.ShowInWindowsExplorerAfterGenerate = value;
+                this.Changed(() => ShowInWindowsExplorerAfterGenerate, PropertyChanged);
+            }
+        }
+
         public string ProjectName
         {
             get { return design.ProjectName; }

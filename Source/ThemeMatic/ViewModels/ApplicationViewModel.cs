@@ -68,6 +68,7 @@ namespace ThemeMatic.ViewModels
             
             var mainWindow = App.Current.MainWindow;
             previewWindow = new PreviewWindow();
+            previewWindow.Design = this.design;
             previewWindow.Owner = mainWindow;
             if (mainWindow.WindowState == WindowState.Maximized)
             {

@@ -66,6 +66,12 @@ namespace ThemeMatic.Model
             sampleApplication.References.Add(themeProject);
 
             sln.Generate();
+
+            // lets just say at this stage we're actively hostile to unit testing....
+            if (design.ShowInWindowsExplorerAfterGenerate)
+            {
+                Process.Start("explorer.exe", sln.Directory);
+            }
         }
 
         private void AddFilesToSampleApplication(Project sampleApplication, Design design)

@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ThemeMatic.Model;
 
 namespace ThemeMatic
 {
@@ -23,6 +24,17 @@ namespace ThemeMatic
             InitializeComponent();
             this.Loaded += new RoutedEventHandler(PreviewWindow_Loaded);
             
+        }
+
+        private Design design;
+        public Design Design
+        {
+            get { return design; }
+            set 
+            { 
+                design = value;
+                this.DataContext = design;
+            }
         }
 
         void PreviewWindow_Loaded(object sender, RoutedEventArgs e)

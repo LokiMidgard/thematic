@@ -70,5 +70,6 @@
         <ResourceDictionary Source="SimpleStyles/tooltip.xaml" />
         <ResourceDictionary Source="SimpleStyles/treeview.xaml" />
         <ResourceDictionary Source="SimpleStyles/window.xaml" />
+        <ResourceDictionary Source="SimpleStyles/branding.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

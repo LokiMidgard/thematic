@@ -48,6 +48,8 @@
         <ResourceDictionary Source="JetPack/Fonts.xaml" />
         <ResourceDictionary Source="JetPack/SDKStyles.xaml" />
         <ResourceDictionary Source="JetPack/Styles.xaml" />
+        <ResourceDictionary Source="JetPack/Branding.xaml" />
+
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

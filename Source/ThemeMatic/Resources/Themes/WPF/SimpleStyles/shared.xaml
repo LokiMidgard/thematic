@@ -222,6 +222,14 @@
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     </Style>
+
+    <SolidColorBrush x:Key="BrandingAlternateBrush" Color="{DynamicResource secondaryBase}" />
+    
+    <LinearGradientBrush x:Key="BrandingBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{DynamicResource primaryLightAccent1}" Offset="0" />
+        <GradientStop Color="{DynamicResource primaryBase}" Offset="0.2" />
+        <GradientStop Color="{DynamicResource primaryDarkAccent1}" Offset="1" />
+    </LinearGradientBrush>
     
 <!--</SnippetBrushes>-->
 </ResourceDictionary>

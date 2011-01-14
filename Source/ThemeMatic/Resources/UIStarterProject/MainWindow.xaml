@@ -2,7 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="480" Width="640">
-    <ScrollViewer>
+    <StackPanel>
+
+        <Border Style="{DynamicResource BrandingBorder}">
+            <TextBlock Text="TestClientApplication" Style="{DynamicResource BrandWindowTitle}" />
+        </Border>
+
+        <ScrollViewer>
         <WrapPanel>
 
             <!-- Button -->
@@ -346,5 +352,7 @@
             </HeaderedItemsControl>
         </WrapPanel>
     </ScrollViewer>
+        
+    </StackPanel>
 
 </Window>

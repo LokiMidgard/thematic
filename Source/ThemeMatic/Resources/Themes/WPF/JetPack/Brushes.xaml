@@ -254,4 +254,11 @@
     <Thickness x:Key="FocusVisualThickness">1,1,1,1</Thickness>
     <SolidColorBrush x:Key="FocusVisualBrush" Color="#00000000" />
 
+    <SolidColorBrush x:Key="BrandingAlternateBrush" Color="{DynamicResource secondaryBase}" />
+
+    <RadialGradientBrush x:Key="BrandingBackgroundBrush"  GradientOrigin="-0.2,-0.2" RadiusX="0.5" RadiusY="1.8" SpreadMethod="Pad">
+        <GradientStop Color="{DynamicResource primaryLightAccent2}" Offset="0" />
+        <GradientStop Color="{DynamicResource primaryBase}" Offset="1" />
+    </RadialGradientBrush>
+
 </ResourceDictionary>

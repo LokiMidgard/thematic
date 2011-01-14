@@ -10,6 +10,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -27,5 +28,9 @@
         <Button Content="..." Grid.Column="2" Grid.Row="2" Margin="0 3 3 3" />
         <!-- TODO: make this do something -->
 
+        <CheckBox IsChecked="{Binding ShowInWindowsExplorerAfterGenerate}" Grid.Column="1" Grid.Row="3">
+            <TextBlock Text="Show generated output in Windows Explorer" />
+        </CheckBox>
+        
     </Grid>
 </UserControl>

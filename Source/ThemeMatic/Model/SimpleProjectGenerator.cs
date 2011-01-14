@@ -72,9 +72,15 @@ namespace ThemeMatic.Model
         {
             var sampleAppSourcePath = new DirectoryInfo(relativePathFromCurrentExecutableToSampleUiFolder);
             var absoluteSampleApplicationRoot = new DirectoryPathAbsolute(sampleAppSourcePath.FullName);
-            AddAllFilesInPathToProject(absoluteSampleApplicationRoot, absoluteSampleApplicationRoot, sampleApplication);
-
-            sampleApplication.UpdateFileContents(@".\App.xaml.cs", str => string.Format(str, design.ThemeAssemblyName, design.Theme.Name));
+            AddAllFilesInPathToProject(absoluteSampleApplicationRoot, absoluteSampleApplicationRoot, sampleApplication, str => str.Replace("TestClientApplication", design.ProjectName));
+            try
+            {
+                sampleApplication.UpdateFileContents(@".\App.xaml.cs", str => string.Format(str, design.ThemeAssemblyName, design.Theme.Name));                
+            }
+            catch (FormatException)
+            {
+                // FormatException can be thrown if the sample UI project is being re-generated (and thus can be ignored) - TODO consider adding a flag to the Project class to determine if it has already been generated
+            }
         }
 
         private void AddFilesToThemeProject(Project themeProject, Design design)
@@ -82,25 +88,25 @@ namespace ThemeMatic.Model
             var absoluteThemeFileRoot = new DirectoryPathAbsolute(AppDomain.CurrentDomain.BaseDirectory);
             var startThemeCopyDirectory =
                 new DirectoryInfo(Path.Combine(relativePathFromCurrentExecutableToWpfThemes, design.Theme.Name));
-            AddAllFilesInPathToProject(absoluteThemeFileRoot, new DirectoryPathAbsolute(startThemeCopyDirectory.FullName), themeProject);
+            AddAllFilesInPathToProject(absoluteThemeFileRoot, new DirectoryPathAbsolute(startThemeCopyDirectory.FullName), themeProject, null);
             string baseResourceDictionaryName = Path.Combine(relativePathFromCurrentExecutableToWpfThemes, design.Theme.Name + ".xaml");
             themeProject.AddFile(new FileInfo(baseResourceDictionaryName).FullName, ".\\" + baseResourceDictionaryName);
 
             themeProject.UpdateFileContents(@".\Resources\Themes\Wpf\" + design.Theme.Name + ".xaml", new ColorUpdater(design).UpdateThemeColors);
         }
 
-        
 
-        private void AddAllFilesInPathToProject(DirectoryPathAbsolute absoluteSampleApplicationRoot, DirectoryPathAbsolute currentFolder, Project project)
+
+        private void AddAllFilesInPathToProject(DirectoryPathAbsolute absoluteSampleApplicationRoot, DirectoryPathAbsolute currentFolder, Project project, Func<string, string> postCopyUpdateFileContentsMethod)
         {
             System.Diagnostics.Debug.WriteLine("Copying contents of folder " + currentFolder.ToString());
             foreach (var file in currentFolder.ChildrenFilesPath)
             {
-                project.AddFile(file.FileInfo.FullName, file.GetPathRelativeFrom(absoluteSampleApplicationRoot).Path);
+                project.AddFile(file.FileInfo.FullName, file.GetPathRelativeFrom(absoluteSampleApplicationRoot).Path, postCopyUpdateFileContentsMethod);
             }
             foreach (var subdirectory in currentFolder.ChildrenDirectoriesPath)
             {
-                AddAllFilesInPathToProject(absoluteSampleApplicationRoot, subdirectory, project);
+                AddAllFilesInPathToProject(absoluteSampleApplicationRoot, subdirectory, project, postCopyUpdateFileContentsMethod);
             }
         }
     }
